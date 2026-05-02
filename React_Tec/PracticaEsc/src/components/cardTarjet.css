@@ -1,0 +1,87 @@
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 230px;
+    border-radius: 15px;
+    border: solid 4px rgb(11, 55, 112);
+    overflow: hidden;
+}
+
+/* Sombras (las dejé igual pero un poco más suaves visualmente) */
+.sombra-rosa {
+  box-shadow: 0px 10px 25px rgba(255, 105, 180, 0.4);
+  border: 4px solid pink;
+}
+
+.sombra-azul {
+  box-shadow: 0px 10px 25px rgba(0, 150, 255, 0.4);
+  border: 4px solid lightblue;
+}
+
+.sombra-negra {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Contenedor interno */
+.card-color{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+/* Contenedor de logos */
+.card-color div:first-child{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Contenedor de datos */
+.card-color div:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Nombre */
+.card-color p:first-child{
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Tipo de tarjeta */
+.card-color p:last-child{
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 5px 0 0 0;
+}
+
+/* ========================= */
+/* PALETA MEJORADA TARJETAS  */
+/* ========================= */
+
+/* ROJO (más elegante tipo vino) */
+.tarjeta-Rojo{
+    background: linear-gradient(135deg, #5a0f0f, #8b1e1e, #c0392b);
+}
+
+/* DORADO (más realista tipo tarjeta premium) */
+.tarjeta-Dorado{
+    background: linear-gradient(135deg, #b8962e 0%, #d4af37 50%, #f1d77a 100%);
+    color: #2c2c2c; /* mejor contraste */
+}
+
+/* PLATINO (gris moderno con toque metálico) */
+.tarjeta-Platino{
+    background: linear-gradient(135deg, #5f6a6a 0%, #aab7b8 50%, #e5e7e9 100%);
+    color: #1c1c1c;
+}

@@ -1,0 +1,62 @@
+/* Contenedor principal con Flexbox */
+.conponent-main {
+  display: flex;
+  flex-direction: row-reverse; /* Esto pone la tarjeta a la izquierda y inputs a la derecha */
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* Sección de la Tarjeta (Lado izquierdo) */
+.conponent-card {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sección de Entradas (Lado derecho) */
+.component-input {
+  flex: 1;
+  max-width: 450px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo para los inputs (asumiendo que el componente Input renderiza un <input>) */
+.component-input input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.component-input input:focus {
+  border-color: #007bff;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .conponent-main {
+    flex-direction: column; /* Se apilan en móvil */
+    align-items: center;
+  }
+  
+  .conponent-card, .component-input {
+    width: 100%;
+    max-width: 100%;
+  }
+}
