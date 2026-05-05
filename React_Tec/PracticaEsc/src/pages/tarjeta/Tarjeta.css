@@ -1,0 +1,85 @@
+:root {
+  --primary-color: #1a2a6c;
+  --accent-color: #3498db;
+  --bg-color: #f0f2f5;
+  --error-color: #e74c3c;
+  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.component-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 50px 20px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.component-input {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.component-card {
+  position: sticky;
+  top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gender-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.gender-select-wrapper label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.gender-select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: white;
+  cursor: pointer;
+}
+
+.gender-select:focus {
+  border-color: var(--accent-color);
+}
+
+/* Responsividad para móviles */
+@media (max-width: 900px) {
+  .component-main {
+    flex-direction: column;
+    align-items: center;
+  }
+  .component-card {
+    position: static;
+    order: -1; /* Muestra la tarjeta arriba en móviles */
+  }
+}

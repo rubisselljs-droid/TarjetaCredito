@@ -1,0 +1,96 @@
+.gender-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.gender-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 12px;
+}
+
+/* Lista vertical */
+.radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+}
+
+/* Escondemos el radio original */
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+/* El círculo personalizado (La bolita) */
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #dcdde1;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+/* El punto interno que aparece al seleccionar */
+.custom-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #3498db;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Estilo cuando está seleccionado */
+.radio-option input[type="radio"]:checked + .custom-radio {
+  border-color: #3498db;
+}
+
+.radio-option input[type="radio"]:checked + .custom-radio::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Texto de la opción */
+.radio-text {
+  font-size: 1rem;
+  color: #2f3640;
+  font-weight: 500;
+}
+
+/* Efecto al pasar el mouse */
+.radio-option:hover .custom-radio {
+  border-color: #3498db;
+  background-color: #f0f7ff;
+}
+
+/* Mensaje de error */
+.gender-error-msg {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

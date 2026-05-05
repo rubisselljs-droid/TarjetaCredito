@@ -21,7 +21,8 @@
 }
 
 .sombra-negra {
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 12px 30px rgba(30, 30, 30, 0.8);
+  border: 4px solid #333;
 }
 
 /* Contenedor interno */
@@ -29,40 +30,51 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
+    padding: 25px; /* Más espacio para que no se vea achocado */
     border-radius: 15px;
     width: 100%;
     height: 100%;
     color: white;
 }
 
-/* Contenedor de logos */
-.card-color div:first-child{
+.card-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 
-/* Contenedor de datos */
-.card-color div:last-child{
+.bank-logo {
+    width: 120px;
+    filter: brightness(1.2);
+}
+
+.chip-icon {
+    color: #ffd700;
+    opacity: 0.9;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.user-info {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
 }
 
-/* Nombre */
-.card-color p:first-child{
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
+.card-holder-name {
+    font-size: 1.4rem; /* Letra más grande */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Estilo tarjeta real */
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Tipo de tarjeta */
-.card-color p:last-child{
-    font-size: 14px;
-    opacity: 0.8;
-    margin: 5px 0 0 0;
+.network-logo {
+    width: 60px;
 }
 
 /* ========================= */
