@@ -1,77 +1,48 @@
 /* Contenedor principal */
-.input-group {
+.input-container {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.2rem;
-  width: 100%;
 }
 
-/* Label estilizada */
+/* Etiqueta del campo */
 .input-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #34495e;
-  margin-bottom: 6px;
-  transition: color 0.3s ease;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
 }
 
-/* Input base */
-.input-field {
-  padding: 12px 15px;
-  border-radius: 10px;
-  border: 2px solid #dcdde1;
-  background-color: #f8f9fa;
-  font-size: 1rem;
-  color: #2f3640;
+/* Campo de entrada */
+.input-campo {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
+  font-family: inherit;
 }
 
-/* Efecto Hover */
-.input-field:hover {
-  border-color: #3498db;
-  background-color: #fff;
+.input-campo:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
 }
 
-/* Efecto Focus (cuando el usuario escribe) */
-.input-field:focus {
-  border-color: #3498db;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
-  transform: translateY(-1px);
-}
-
-/* Estado de Error */
-.input-field.input-error {
+/* Estado de error */
+.input-campo-error {
   border-color: #e74c3c;
-  background-color: #fff5f5;
-  animation: shake 0.4s linear; /* Animación de vibración */
 }
 
-.input-field.input-error:focus {
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.15);
+.input-campo-error:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1);
 }
 
 /* Mensaje de error */
-.error-message {
+.input-error-mensaje {
   color: #e74c3c;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  animation: fadeIn 0.3s ease;
-}
-
-/* Animaciones */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
 }

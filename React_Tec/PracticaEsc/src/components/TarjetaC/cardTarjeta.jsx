@@ -12,8 +12,6 @@ export default function CardTarjeta({
   fecha,
   cantidad,
 }) {
-  const dia = "15/29";
-  
   const obtenerColor = (generoMF) => {
     switch (generoMF) {
       case "mujer":
@@ -33,23 +31,42 @@ export default function CardTarjeta({
     return "tarjeta-Platino";
   };
 
+  //me sirve para calcular el porcentaje de la barra de límite de crédito en la parte trasera de la tarjeta
+  const porcentajeBarra = Math.min((cantidad / 200000) * 100, 100);
+
   return (
     <div className={`card ${obtenerColor(sexo)}`}>
-      <div className={`card-color ${obtenerTarjeta(cantidad)}`}>
-        <div>
-          <img src={rubanck} alt="logo" width="100px" />
-          <img src={mastercard} alt="mastercard" width="100px" />
+      <div className="card-inner">
+        {/* Cara Frontal */}
+        <div className={`card-front ${obtenerTarjeta(cantidad)}`}>
+          <div className="card-header">
+            <img src={rubanck} alt="logo" className="bank-logo" />
+            <SiSonarqubeserver className="chip-icon" size={38} />
+          </div>
+
+          <div className="card-body">
+            <h2 className="card-holder-name">{nombre} {apellido}</h2>
+          </div>
+
+          <div className="card-footer">
+            <p className="card-label">Crédito Personalizado</p>
+            <img src={mastercard} alt="mastercard" className="network-logo" />
+          </div>
         </div>
 
-        <div>
-          <span>
-            <p>
-              {nombre} {apellido}
-            </p>
-            <p>
-              credito <SiSonarqubeserver />{" "}
-            </p>
-          </span>
+        {/* Cara Trasera */}
+        <div className={`card-back ${obtenerTarjeta(cantidad)}`}>
+          <div className="magnetic-strip"></div>
+          <div className="signature-area">
+            <span>{cvv}</span>
+          </div>
+          <div className="back-details">
+            <div className="expiry-info">
+              <small>VALID THRU</small>
+              <p style={{ margin: 0, fontWeight: 'bold' }}>{fecha}</p>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>

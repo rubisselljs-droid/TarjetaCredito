@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
-import './Input.css'; // Importamos los estilos
+import './Input.css';
 
 const Input = ({ nombre, configuracion, value, onChange }) => {
-  const [esTocado, setEsTocado] = useState(false);
+  const [error, setError] = useState("");
 
   if (!configuracion) return null;
 
-  const tieneError = configuracion.requerido && esTocado && String(value).trim() === "";
+  const validar = (texto) => {
+    if (!configuracion.requerido && texto === "") return true;
+    
+    if (configuracion.requerido && texto.trim() === "") {
+      setError("Error al llenar el campo");
+      return false;
+    }
+    
+    if (configuracion.pattern) {
+      const regex = new RegExp(configuracion.pattern);
+      if (!regex.test(texto)) {
+        setError("Dato inválido");
+        return false;
+      }
+    }
+    
+    setError("");
+    return true;
+  };
+
+  const manejarChange = (e) => {
+    const nuevoValor = e.target.value;
+    validar(nuevoValor);
+    onChange(e);
+  };
 
   return (
-    <div className="input-group">
+    <div className="input-container">
       {configuracion.label && (
-        <label className={`input-label ${tieneError ? 'label-error' : ''}`}>
+        <label className="input-label">
           {configuracion.label}
         </label>
       )}
@@ -20,18 +44,15 @@ const Input = ({ nombre, configuracion, value, onChange }) => {
         name={nombre}
         type={configuracion.type || "text"}
         value={value}
-        onChange={onChange}
+        onChange={manejarChange}
         placeholder={configuracion.placeholder}
         maxLength={configuracion.maxLength}
-        pattern={configuracion.pattern}
-        onBlur={() => setEsTocado(true)} 
-        // Aplicamos clases dinámicas según el estado
-        className={`input-field ${tieneError ? 'input-error' : ''}`}
+        className={`input-campo ${error ? 'input-campo-error' : ''}`}
       />
 
-      {tieneError && (
-        <span className="error-message">
-          ⚠ Este campo es obligatorio
+      {error && (
+        <span className="input-error-mensaje">
+          {error}
         </span>
       )}
     </div>

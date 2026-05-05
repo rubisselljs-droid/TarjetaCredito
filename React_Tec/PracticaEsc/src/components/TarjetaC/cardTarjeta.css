@@ -1,40 +1,63 @@
 .card{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: transparent;
     width: 400px;
     height: 230px;
-    border-radius: 15px;
-    border: solid 4px rgb(11, 55, 112);
-    overflow: hidden;
+    perspective: 1000px; /* Necesario para el efecto 3D */
+    cursor: pointer;
 }
 
-/* Sombras (las dejé igual pero un poco más suaves visualmente) */
-.sombra-rosa {
-  box-shadow: 0px 10px 25px rgba(255, 105, 180, 0.4);
-  border: 4px solid pink;
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
 }
 
-.sombra-azul {
-  box-shadow: 0px 10px 25px rgba(0, 150, 255, 0.4);
-  border: 4px solid lightblue;
+.card:hover .card-inner {
+    transform: rotateY(180deg);
 }
 
-.sombra-negra {
-  box-shadow: 0px 12px 30px rgba(30, 30, 30, 0.8);
-  border: 4px solid #333;
-}
-
-/* Contenedor interno */
-.card-color{
+.card-front, .card-back {
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 25px; /* Más espacio para que no se vea achocado */
-    border-radius: 15px;
     width: 100%;
     height: 100%;
-    color: white;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+/* Animación de brillo metálico */
+@keyframes metallicShine {
+    0% { transform: translateX(-150%) skewX(-25deg); }
+    50% { transform: translateX(150%) skewX(-25deg); }
+    100% { transform: translateX(150%) skewX(-25deg); }
+}
+
+/* Sombras de Género mejoradas y más vibrantes */
+.sombra-rosa {
+  box-shadow: 0px 0px 30px rgba(255, 20, 147, 0.6); /* Rosa fuerte/DeepPink */
+  border: 4px solid #ff1493;
+  border-radius: 18px; /* Ajustado para que el borde siga la curva */
+}
+
+.sombra-azul {
+  box-shadow: 0px 0px 30px rgba(0, 102, 255, 0.6); /* Azul eléctrico */
+  border: 4px solid #0066ff;
+  border-radius: 18px;
+}
+
+.sombra-negra {
+  box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.9); /* Negro muy profundo y marcado */
+  border: 4px solid #1a1a1a;
+  border-radius: 18px;
 }
 
 .card-header {
@@ -42,15 +65,18 @@
     justify-content: space-between;
     align-items: center;
 }
-
 .bank-logo {
-    width: 120px;
-    filter: brightness(1.2);
+    width: 90px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
+    object-fit: contain;
 }
 
 .chip-icon {
-    color: #ffd700;
-    opacity: 0.9;
+    color: #333;
+    background: linear-gradient(135deg, #e6b12d 0%, #fff1ad 50%, #835f08 100%);
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: inset 1px 1px 1px rgba(255,255,255,0.5), 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .card-footer {
@@ -64,14 +90,72 @@
     flex-direction: column;
 }
 
-.card-holder-name {
-    font-size: 1.4rem; /* Letra más grande */
+.card-holder-name, .card-label-back {
+    font-size: 1.1rem; /* Tamaño balanceado */
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 3px; /* Estilo tarjeta real */
+    letter-spacing: 2px;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px; /* Evita que empuje el logo */
 }
+
+/* --- PARTE TRASERA --- */
+.card-back {
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.magnetic-strip {
+    background: #1a1a1a;
+    width: calc(100% + 50px);
+    height: 45px;
+    margin-left: -25px;
+    margin-top: 10px;
+}
+
+.signature-area {
+    background: rgba(255, 255, 255, 0.8);
+    width: 80%;
+    height: 35px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    color: #333;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.back-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+}
+
+.card-Dorado .back-details, .card-Platino .back-details {
+    color: inherit; /* Mantiene el color oscuro del texto en oro/plata */
+}
+.limit-bar-bg {
+    width: 150px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.limit-bar-fill {
+    height: 100%;
+    background: currentColor; /* Usa el color del texto actual */
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+/* --- FIN PARTE TRASERA --- */
 
 .network-logo {
     width: 60px;
@@ -84,16 +168,38 @@
 /* ROJO (más elegante tipo vino) */
 .tarjeta-Rojo{
     background: linear-gradient(135deg, #5a0f0f, #8b1e1e, #c0392b);
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 /* DORADO (más realista tipo tarjeta premium) */
 .tarjeta-Dorado{
     background: linear-gradient(135deg, #b8962e 0%, #d4af37 50%, #f1d77a 100%);
-    color: #2c2c2c; /* mejor contraste */
+    color: #3d2b00; /* mejor contraste */
+}
+
+.tarjeta-Dorado::before, .tarjeta-Platino::before,
+.tarjeta-Dorado::after, .tarjeta-Platino::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    animation: metallicShine 4s infinite linear;
+    pointer-events: none;
 }
 
 /* PLATINO (gris moderno con toque metálico) */
 .tarjeta-Platino{
-    background: linear-gradient(135deg, #5f6a6a 0%, #aab7b8 50%, #e5e7e9 100%);
-    color: #1c1c1c;
+    /* Plata predominante con una veta elegante de oro */
+    background: linear-gradient(135deg, #333 0%, #bdc3c7 25%, #d4af37 50%, #bdc3c7 75%, #eee 100%);
+    color: #1a1a1c;
+}
+
+.tarjeta-Platino .chip-icon {
+    /* Chip de platino/acero para esta tarjeta */
+    background: linear-gradient(135deg, #a0a0a0 0%, #ffffff 50%, #444 100%);
+    color: #222;
 }

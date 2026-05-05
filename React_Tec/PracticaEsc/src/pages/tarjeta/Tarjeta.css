@@ -1,85 +1,175 @@
-:root {
-  --primary-color: #1a2a6c;
-  --accent-color: #3498db;
-  --bg-color: #f0f2f5;
-  --error-color: #e74c3c;
-  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.component-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 60px;
-  padding: 50px 20px;
-  min-height: 100vh;
-  background-color: var(--bg-color);
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-.component-input {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: var(--card-shadow);
-  width: 100%;
-  max-width: 400px;
+/* General Page Layout */
+.tarjeta-page-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  min-height: 100vh; /* Ensure it takes at least full viewport height */
+  background-color: #f0f2f5; /* Light background for the whole page */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.form-title {
-  margin-bottom: 20px;
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.component-card {
-  position: sticky;
-  top: 50px;
+/* Header Styling */
+.page-header {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.gender-select-wrapper {
+.header-brand {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+  align-items: center;
+  gap: 1rem;
 }
 
-.gender-select-wrapper label {
-  margin-bottom: 5px;
-  font-weight: bold;
+.page-logo {
+  height: 50px; /* Adjust as needed */
+  width: auto;
+}
+
+.header-text h1 {
+  margin: 0;
+  font-size: 1.8rem;
   color: #333;
 }
 
-.gender-select {
-  padding: 12px;
+.header-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Main Content Layout */
+.main-layout {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center;
+  gap: 2.5rem; /* Space between card and form */
+  padding: 2.5rem;
+  flex-grow: 1; /* Allows main content to take available space */
+}
+
+/* Card Preview Section */
+.preview-section {
+  flex: 1;
+  min-width: 350px; /* Minimum width for the card section */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align card to the top */
+}
+
+.sticky-card {
+  position: sticky;
+  top: 2rem; /* Distance from the top of the viewport */
+  align-self: flex-start; /* Ensures it sticks to the top of its flex container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.preview-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+/* Form Section */
+.form-section {
+  flex: 2; /* Form takes more space */
+  min-width: 400px; /* Minimum width for the form section */
+  max-width: 700px; /* Max width for the form */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align form to the top */
+}
+
+.form-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem; /* Space between form elements */
+  width: 100%;
+}
+
+.form-section-title {
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.input-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Space between rows of inputs */
+}
+
+.input-row {
+  display: flex;
+  gap: 1.2rem; /* Space between inputs in a row */
+  flex-wrap: wrap; /* Allow inputs to wrap on smaller screens */
+}
+
+.input-row > div { /* Target the input-container div from Input.jsx */
+  flex: 1; /* Allows inputs to grow and shrink */
+  min-width: 180px; /* Minimum width for individual inputs before wrapping */
+}
+
+.gender-selection {
+  margin-top: 1rem;
+}
+
+.btn-confirmar {
+  background-color: #007bff;
+  color: white;
+  padding: 0.9rem 1.5rem;
+  border: none;
   border-radius: 8px;
-  border: 2px solid #ccc;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s;
-  background-color: white;
+  font-size: 1.1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: center; /* Center the button */
+  width: fit-content; /* Adjust width to content */
 }
 
-.gender-select:focus {
-  border-color: var(--accent-color);
+.btn-confirmar:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-/* Responsividad para móviles */
-@media (max-width: 900px) {
-  .component-main {
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-layout {
     flex-direction: column;
     align-items: center;
+    padding: 1.5rem;
   }
-  .component-card {
-    position: static;
-    order: -1; /* Muestra la tarjeta arriba en móviles */
+
+  .preview-section, .form-section {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .sticky-card {
+    position: static; /* Disable sticky on small screens */
+    top: unset;
+  }
+
+  .input-row {
+    flex-direction: column; /* Stack inputs vertically on small screens */
+    gap: 1rem;
+  }
+
+  .input-row > div {
+    min-width: unset;
+    width: 100%;
   }
 }
