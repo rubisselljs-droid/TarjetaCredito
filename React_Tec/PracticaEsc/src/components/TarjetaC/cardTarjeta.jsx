@@ -49,7 +49,7 @@ export default function CardTarjeta({
           </div>
 
           <div className="card-footer">
-            <p className="card-label">Crédito Personalizado</p>
+          
             <img src={mastercard} alt="mastercard" className="network-logo" />
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function CardTarjeta({
           </div>
           <div className="back-details">
             <div className="expiry-info">
-              <small>VALID THRU</small>
+              <small>M / A</small>
               <p style={{ margin: 0, fontWeight: 'bold' }}>{fecha}</p>
             </div>
             
