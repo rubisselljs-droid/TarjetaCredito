@@ -1,15 +1,19 @@
+// agregamos esto para que podamos tener un orden 
+// y una estructura en la información que se muestra en el formulario de la tarjeta
+
+
 export const confiIn = {
   nombre: {
     label: "Nombre",
-    placeholder: "Ej. Juan",
+    placeholder: "NOMBRE",
     type: "text",
     pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$", 
     requerido: true,
   },
-  // AGREGA ESTA SECCIÓN:
+  
   apellido: {
     label: "Apellido",
-    placeholder: "Ej. Pérez",
+    placeholder: "APELLIDO",
     type: "text",
     pattern: "^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$", 
     requerido: true,

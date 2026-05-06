@@ -8,7 +8,6 @@ export default function CardTarjeta({
   apellido,
   sexo,
   color,
-  cvv,
   fecha,
   cantidad,
 }) {
@@ -24,10 +23,22 @@ export default function CardTarjeta({
         return "";
     }
   };
+
+  let TarjetaTipo = '';
   const obtenerTarjeta = (monto) => {
-    if (monto >= 500 && monto < 25000) return "tarjeta-Rojo";
-    if (monto >= 25000 && monto < 200000) return "tarjeta-Dorado";
-    if (monto >= 200000) return "tarjeta-Platino";
+    if (monto >= 500 && monto < 25000){
+        TarjetaTipo = "Tarjeta Estándar";
+        return "tarjeta-Rojo";
+    }
+     
+    if (monto >= 25000 && monto < 200000){
+        TarjetaTipo = "Tarjeta Gold";
+        return "tarjeta-Dorado";
+    }
+    if (monto >= 200000){
+       TarjetaTipo = "Tarjeta Platino";
+       return "tarjeta-Platino";
+    }
     return "tarjeta-Platino";
   };
 
@@ -58,12 +69,13 @@ export default function CardTarjeta({
         <div className={`card-back ${obtenerTarjeta(cantidad)}`}>
           <div className="magnetic-strip"></div>
           <div className="signature-area">
-            <span>{cvv}</span>
+            <span>{TarjetaTipo}</span>
           </div>
           <div className="back-details">
             <div className="expiry-info">
               <small>M / A</small>
               <p style={{ margin: 0, fontWeight: 'bold' }}>{fecha}</p>
+              <p  style={{ margin: 0, fontWeight: 'bold' }} >CREDITO: $ {cantidad=== 200000 ? 'ILIMITADO' : cantidad } </p>
             </div>
             
           </div>

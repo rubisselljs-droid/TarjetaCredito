@@ -4,8 +4,8 @@ const Barrita = ({ value, onChange }) => {
   // Función para obtener el nivel según el valor
   const obtenerNivel = (valor) => {
     if (valor >= 500 && valor < 25000) return "Estándar";
-    if (valor >= 25000 && valor < 200000) return "Ilimitado";
-    if (valor >= 200000) return "Platino";
+    if (valor >= 25000 && valor < 200000) return "Gold  ";
+  if (valor >= 200000) return "ILIMITADA";
     return "Estándar";
   };
 
@@ -32,7 +32,7 @@ const Barrita = ({ value, onChange }) => {
         fontSize: '14px'
       }}>
         <span>$500</span>
-        <span>$25,000</span>
+        
         <span>$200,000</span>
       </div>
       <div style={{ 

@@ -27,14 +27,31 @@ export default function Tarjeta() {
     setFormulario({ ...formulario, [name]: val });
   };
 
-  const Enviar = () => {
-    if (esVisible === false) {
-      setEsVisible(true);
-    } else {
-      
-      setEsVisible(false);
-    }
-  };
+ const Enviar = () => {
+  try{
+    
+  if (
+    formulario.nombre && 
+    formulario.apellido && 
+    formulario.email && 
+    formulario.telefono && 
+    formulario.rfc && 
+    formulario.curp && 
+    sexo && 
+    cantidad
+  ) {
+    
+    setEsVisible(!esVisible);
+  } else {
+    
+    alert("Por favor, completa todos los campos antes de enviar la solicitud.");
+  }
+  }catch(error){
+    
+    alert("Ocurrió un error al enviar la solicitud. Por favor, inténtalo de nuevo.");
+  }
+};
+
 
   return (
     <div className="tarjeta-page-container">

@@ -3,7 +3,7 @@ export default function Termino({ onClic }) {
   return (
     <div className="termino-overlay">
       <div className="solicitud-container">
-        <h3 className="success-message">¡Solicitud Enviada con Éxito!</h3>
+        <h3 className="success-message">¡ACEPTAR LOS TERMINOS Y CONDICIONES!</h3>
 
         <div className="requisitos-card">
           <h4 className="requisitos-titulo">📋 Requisitos y Términos:</h4>

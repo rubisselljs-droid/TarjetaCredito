@@ -7,6 +7,8 @@ const Input = ({ nombre, configuracion, value, onChange }) => {
   if (!configuracion) return null;
 
   const validar = (texto) => {
+
+    //si el campo no es requerido y el texto está vacío, no hay error y marca valido 
     if (!configuracion.requerido && texto === "") return true;
     
     if (configuracion.requerido && texto.trim() === "") {
@@ -26,6 +28,9 @@ const Input = ({ nombre, configuracion, value, onChange }) => {
     return true;
   };
 
+
+  //procesamos el cambio del input, validamos el nuevo valor y luego llamamos al
+  //  onChange para actualizar el estado en el componente padre
   const manejarChange = (e) => {
     const nuevoValor = e.target.value;
     validar(nuevoValor);
