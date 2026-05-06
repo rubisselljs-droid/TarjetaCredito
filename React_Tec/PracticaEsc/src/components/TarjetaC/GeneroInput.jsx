@@ -9,7 +9,7 @@ export default function GeneroInput({ label, value, onChange }) {
   const opciones = [
     { id: 'mujer', texto: 'Femenino' },
     { id: 'hombre', texto: 'Masculino' },
-    { id: 'otro', texto: '39 Tipos de Gays' }
+    { id: 'otro', texto: 'Otro' }
   ];
 
   return (
