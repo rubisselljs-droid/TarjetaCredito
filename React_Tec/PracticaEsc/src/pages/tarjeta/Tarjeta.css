@@ -145,6 +145,7 @@
   transform: translateY(-2px);
 }
 
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .main-layout {

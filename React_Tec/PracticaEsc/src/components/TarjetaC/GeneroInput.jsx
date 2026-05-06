@@ -4,12 +4,12 @@ import './Genero.css';
 export default function GeneroInput({ label, value, onChange }) {
   const [fueTocado, setFueTocado] = useState(false);
 
-  const tieneError = fueTocado && !value;
+
 
   const opciones = [
-    { id: 'mujer', texto: 'Mujer' },
-    { id: 'hombre', texto: 'Hombre' },
-    { id: 'otro', texto: 'Prefiero no decirlo' }
+    { id: 'mujer', texto: 'Femenino' },
+    { id: 'hombre', texto: 'Masculino' },
+    { id: 'otro', texto: '39 Tipos de Gays' }
   ];
 
   return (
@@ -21,7 +21,7 @@ export default function GeneroInput({ label, value, onChange }) {
           <label key={op.id} className="radio-option">
             <input
               type="radio"
-              name="genero" // Importante: mismo name para que sean excluyentes
+              name="genero" 
               value={op.id}
               checked={value === op.id}
               onChange={(e) => {
@@ -35,11 +35,7 @@ export default function GeneroInput({ label, value, onChange }) {
         ))}
       </div>
 
-      {tieneError && (
-        <span className="gender-error-msg">
-          ⚠ Seleccionar un género es obligatorio
-        </span>
-      )}
+     
     </div>
   );
 }

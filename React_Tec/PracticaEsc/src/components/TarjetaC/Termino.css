@@ -1,0 +1,114 @@
+/* Overlay para oscurecer el fondo y centrar el modal */
+.termino-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Contenedor Flotante */
+.solicitud-container {
+  background: #ffffff;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-message {
+  color: #2ecc71;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* Tarjeta de Requisitos */
+.requisitos-card {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.requisitos-titulo {
+  font-size: 1.1rem;
+  color: #34495e;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.requisitos-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requisito-item {
+  font-size: 0.95rem;
+  color: #576574;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.requisito-item::before {
+  content: "•";
+  color: #3498db;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Botones */
+.botones-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-aceptar, .btn-rechazar {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.btn-aceptar {
+  background: #3498db;
+  color: white;
+}
+
+.btn-aceptar:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-rechazar {
+  background: #ecf0f1;
+  color: #7f8c8d;
+}
+
+.btn-rechazar:hover {
+  background: #bdc3c7;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(30px) scale(0.95); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
